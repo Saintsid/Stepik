@@ -6,25 +6,25 @@
 #  let nomer=nomer+1
 #done
 
-#for i in {58..63} ; do
-#  if (( i != 61 )) ; then
-#    echo 'at last it is 61'
-#  else
-#    echo 'no'
-#  fi
+#diap=(1	6	73	74 78	79	80	82	83	84	85	86)
+#for i in ${diap[@]}; do
+for i in {61..77} ; do
+  ping -w 2 172.16.1.$i
+done
+
+#nom=61
+#newIP=()
+#echo 'Cisco IP from 61 to 86'
+#diap=(1	6	73	74 78	79	80	82	83	84	85	86)
+#for b in ${diap[@]}; do
+#  newIP=(${newIP[@]} "$nom")
+#  nom=$((nom+2))
+#done
+#for value in "${newIP[@]}"
+#do
+#     echo $value
 #done
 
-nom=61
-echo 'Cisco IP from 61 to 86'
-diap=(1	6	73	74 78	79	80	82	83	84	85	86)
-for b in ${diap[@]}; do
-  echo "172.16.1.$nom"
-  if (( nom != 64 )) ; then
-    nom=$((nom+1))
-  else
-    nom=$((nom+2))
-  fi
-done
 
 #echo 'Cisco IP 89'
 #echo "172.16.1.$nom"

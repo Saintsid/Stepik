@@ -1,30 +1,40 @@
 #!/bin/bash
 co="echo 'conf'"
-v="echo 'interface vl 1'"
+#v="echo 'interface vl 1'"
 x="echo 'exit'"
-#routeway="echo 'show ip route'"
-#route="echo 'sho ip interface'"
-routeway="echo 'ip default-gateway 172.16.1.3'"
+#c1="echo 'show ip route'"      # ---; eval $c1 ; sleep 1 ---
+#c2="echo 'sho ip interface'"   # ---; eval $c2 ; sleep 1 ---
+#routeway="echo 'ip default-gateway 172.16.1.3'"
 route="echo 'ip route 172.16.0.0 255.255.0.0 172.16.1.3'"
-nom=61
+#route2="echo 'ip route 172.16.0.0 255.255.0.0 172.10.1.65 metric 60'"
+#nom=74
 
-echo 'Cisco IP from 61 to 86'
-#diap=(1	6	73	74 78	79	80	82	83	84	85	86)
-diap=(83	84	85	86)
+echo 'Cisco'
+#diap=(61	62	63	64	65	115	66	67	68	69	70	71	72	73	74)
+diap=(74)
 for b in ${diap[@]}; do
-  a="-tt admin@172.16.1.$b"
-  # Подключиться, добавить IP из другой маски, добавить маршруты
-  { sleep 2 ; eval $co ; sleep 1 ; eval $route ; sleep 1 ; eval $routeway ; sleep 1 ; eval $v ; sleep 1 ; echo "ip address 172.10.1.$nom 255.255.0.0" ; sleep 1 ; eval $x ; sleep 1 ; eval $x ; sleep 1 ; echo "write" ; sleep 1 ; echo "y"; sleep 5 ; eval $x ; } | ssh $a
-  if (( nom != 64 )) ; then
-    nom=$((nom+1))
-  else
-    nom=$((nom+2))
-  fi
+  a="-tt -c aes256-ctr -o PubkeyAcceptedKeyTypes=+ssh-rsa -oHostKeyAlgorithms=+ssh-rsa -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 admin@172.16.1.$b"
+#  a2="-tt -c aes256-ctr -o PubkeyAcceptedKeyTypes=+ssh-rsa -oHostKeyAlgorithms=+ssh-rsa -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 admin@172.10.1.$nom"
+#  new="-tt -c aes256-ctr -o PubkeyAcceptedKeyTypes=+ssh-rsa -oHostKeyAlgorithms=+ssh-rsa -oKexAlgorithms=+diffie-hellman-group-exchange-sha1 admin@172.16.1.$nom"
+  # Подключиться, добавить маршруты, 1) добавить IP из другой маски, 2) добавить IP из нужной маски, 3) удалить промежуточный IP:
+#  { sleep 2 ; eval $co ; sleep 1 ; eval $route ; sleep 1 ; eval $route2 ; sleep 3 ; eval $v ; sleep 1 ; echo "ip address 172.16.1.$nom /24" ; sleep 2 ; eval $x ; sleep 1 ; eval $x ; sleep 1 ; eval $x ; } | ssh $a
+#  { sleep 2 ; eval $co ; sleep 1 ; eval $route ; sleep 1 ; eval $route2 ; sleep 1 ; eval $v ; sleep 1 ; echo "ip address 172.10.1.$nom /24" ; sleep 2 ; eval $x ; sleep 1 ; eval $x ; sleep 1 ; eval $x ; } | ssh $a
+#  { sleep 2 ; eval $co ; sleep 1 ; eval $v ; sleep 1 ; echo "no ip address 172.16.1.$b" ; sleep 1 ; echo "ip address 172.16.1.$nom /24" ; sleep 2 ; eval $x ; sleep 1 ; eval $x ; sleep 1 ; eval $x ; } | ssh $a2
+#  { sleep 2 ; eval $co ; sleep 1 ; eval $v ; sleep 1 ; echo "no ip address 172.10.1.$nom" ; sleep 1 ; eval $x ; sleep 1 ; eval $x ; sleep 1 ; echo "write" ; sleep 1 ; echo "y"; sleep 5 ; eval $x ; } | ssh $new
+  { sleep 5 ; eval $co ; sleep 1 ; eval $route ; sleep 1 ; eval $x ; sleep 1 ; echo "write" ; sleep 1 ; echo "y"; sleep 5 ; eval $x ; } | ssh $a
+#  nom=$((nom+1))
 done
 
-echo 'Cisco IP 89'
-a="-tt -c aes256-ctr -o PubkeyAcceptedKeyTypes=+ssh-rsa -oHostKeyAlgorithms=+ssh-rsa -oKexAlgorithms=+diffie-hellman-group-exchange-sha1  admin@172.16.1.89"
-  { sleep 2 ; eval $co ; sleep 1 ; eval $route ; sleep 1 ; eval $routeway ; sleep 1 ; eval $v ; sleep 1 ; echo "ip address 172.16.1.$nom 255.255.255.0" ; sleep 1 ; eval $x ; sleep 1 ; eval $x ; sleep 1 ; echo "write" ; sleep 1 ; echo "y"; sleep 5 ; eval $x ; } | ssh $a
+
+
+
+
+
+
+
+
+
+
 
 
 
