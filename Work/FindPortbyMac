@@ -1,0 +1,14 @@
+#!/bin/bash
+
+co="echo 'show mac address-table | include f2:d7'"
+x="echo 'exit'"
+
+
+echo 'Search port by Mac'
+diap=(75 76 77 78 79 80 81 82 83 84 85)
+#diap=(74)
+for b in ${diap[@]}; do
+  a="-tt admin@172.16.1.$b"
+  { sleep 2 ; eval $co ; sleep 12 ; eval $x ; } | ssh $a
+
+done
