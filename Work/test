@@ -1,0 +1,8 @@
+#!/bin/bash
+komanda=(5)
+nom=96
+for i in ${komanda[@]}; do
+  { sleep 17 ; eval $co ; sleep 1 ; eval $route ; sleep 1 ; eval $v ; sleep 1 ; echo "ip address 172.16.1.$nom 24" ; } | ssh admin@172.16.4.$i
+  echo "quit"
+#  nom=nom+2
+done
