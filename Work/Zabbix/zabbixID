@@ -1,0 +1,2 @@
+curl --silent --show-error --insecure --header 'Content-Type: application/json-rpc' --data '{"jsonrpc": "2.0","method":"user.login","params":{"user": "admin","password": "Angel1@$"},"id": 1 }' http://172.16.1.5/zabbix/api_jsonrpc.php
+echo ''

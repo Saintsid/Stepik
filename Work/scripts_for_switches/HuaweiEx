@@ -1,0 +1,23 @@
+#!/usr/bin/expect
+
+#set nom 53
+
+#Коммутаторы Huawei 86 87 88 89 91	3 92 93 94 95
+foreach b {94 96 97 98} {
+  spawn ssh admin@172.16.1.$b
+  expect ">" { send "sys\n" }
+  puts "\n"
+  expect ">" { send "sys\n" }
+  expect "]" { send "snmp-agent sys-info version v2c\n" }
+  expect "]" { send "snmp-agent community read public01\n" }
+  expect "]" { send "snmp-agent community write private01\n"}
+  expect "]" { send "snmp-agent trap enable\n" }
+  expect ":" { send "y\n" }
+  expect "]" { send "snmp-agent target-host trap address udp-domain 172.16.1.5 params securityname public01\n"}
+  expect "]" { send "snmp-agent protocol source-status all-interface\n" }
+  expect "]" { send "quit\n"}
+  expect ">" { send "save\n" }
+  expect "]" { send "y\n" }
+  expect ">" { send "quit\n"}
+  puts "\n"
+  }

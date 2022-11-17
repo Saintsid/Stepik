@@ -1,0 +1,18 @@
+#!/usr/bin/expect
+
+#set nom 53
+
+#Коммутаторы Cisco
+for {set b 61} {$b <= 73} {incr b} {
+  spawn ssh admin@172.16.1.$b
+  expect "#" { send "conf\n" }
+  expect "#" { send "snmp-server server\n" }
+  expect "#" { send "snmp-server community public01 ro\n" }
+  expect "#" { send "snmp-server community private01 rw\n"}
+  expect "#" { send "snmp-server host 172.16.1.5 version 2c public01\n" }
+  expect "#" { send "exit\n"}
+  expect "#" { send "write\n" }
+  expect ")" { send "y\n" }
+  expect "#" { send "exit\n"}
+  puts "\n"
+  }

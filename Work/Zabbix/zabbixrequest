@@ -1,0 +1,21 @@
+curl  -H "Content-Type: application/json-rpc" -X POST http://172.16.1.5/zabbix/api_jsonrpc.php -d'
+{
+    "jsonrpc": "2.0",
+    "method": "hostinterface.massremove",
+    "params": {
+        "hostids": [
+            "10634",
+            "10647"
+        ],
+        "interfaces": {
+            "dns": "",
+            "ip": "127.0.0.1",
+            "type": 1,
+        }
+    },
+    "auth": "b67e897225864a0e5b722f2f9b3a13e5",
+    "id": 1
+}'
+echo ''
+
+
