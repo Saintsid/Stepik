@@ -35,7 +35,7 @@ for [hostname,ip] in f:
             }
         }],
         groups=[{
-            "groupid": 27
+            "groupid": 22
         }],
         templates=[{
             "templateid": 10218
