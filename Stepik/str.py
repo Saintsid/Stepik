@@ -45,13 +45,6 @@
 # else:
 #     print('Цифр нет')
 
-s = input()
-l = s.lower()
-print('Аденин:', l.count('a'))
-print('Гуанин:', l.count('г'))
-print('Цитозин:', l.count('ц'))
-print('Тимин:', l.count('т'))
-
 
 
 

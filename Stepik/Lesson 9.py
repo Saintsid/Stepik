@@ -81,8 +81,59 @@
 # print(count)
 # print(sum(s.islower() for s in input()))
 
-print(sum(s.islower() for s in input()))
-123
+# print(sum(s.islower() for s in input()))
+# 123
+
+# s = input()
+# print(int(s.count(' ')) + 1)
+
+# s = input()
+# l = s.lower()
+# print('Аденин:', l.count('а'))
+# print('Гуанин:', l.count('г'))
+# print('Цитозин:', l.count('ц'))
+# print('Тимин:', l.count('т'))
+#
+
+# counter = 0
+# n = int(input())
+# for i in range(n):
+#     a = input().count('11')
+#     if a > 2:
+#         counter += 1
+# print(counter)
+
+# s = input()
+# counter = 0
+# for i in range(len(s)):
+#     if s[i] in "asdf":
+#         counter += 1
+# print(counter)
+
+s = input()
+if s.endswith(('.ru', '.com')):
+    print('YES')
+else:
+    print('NO')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

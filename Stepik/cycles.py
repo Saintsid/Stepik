@@ -549,8 +549,6 @@
 a = ['a', 'b', 'c', 'd']
 b = ['w', 'x', 'y', 'z']
 
-
-
 for k, j in zip(a, b):
     print('super', k)
     print('puper', j)
