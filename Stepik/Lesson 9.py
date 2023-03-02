@@ -110,14 +110,22 @@
 #         counter += 1
 # print(counter)
 
-s = input()
-if s.endswith(('.ru', '.com')):
-    print('YES')
-else:
-    print('NO')
+# s = input()
+# if s.endswith(('.ru', '.com')):
+#     print('YES')
+# else:
+#     print('NO')
 
+import re
 
-
+s = r'\\PC2233\c$\users\Редкозубова\AppData\Roaming\1C\1CEStart\ibases.v8i'
+# s1 = s.replace("\\", "")
+# s2 = re.sub(r'\bAppDataRoaming1C1CEStartibases\b', '', s1, flags=re.IGNORECASE)
+# print(s2)
+s1 = s.partition('\A')[0]
+s2 = s1[2:8] + "\n " + s1[18:]
+print(s1)
+print(s2)
 
 
 

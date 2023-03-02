@@ -2,11 +2,10 @@
 
 #set nom 53
 #Основная масса SNR
-foreach b {100 101 102 103 104 105 106 107 108 109 53 54 55} {
+foreach b {100 101 102 103 104 105 106 107 108 109 53 54 55 46 47} {
   spawn ssh admin@172.16.1.$b
   expect "#" { send "conf\n" }
-  expect "#" { send "snmp-server securityip disable\n" }
-  expect "#" { send "snmp-server enable traps\n" }
+  expect "#" { send "no telnet-server enable\n" }
   expect "#" { send "exit\n"}
   expect "#" { send "write\n" }
   expect ":" { send "y\n" }
@@ -19,8 +18,7 @@ foreach b {56 57} {
   spawn ssh admin@172.16.1.$b
   expect "d:" { send "Angel1@$\n" }
   expect "#" { send "conf\n" }
-  expect "#" { send "snmp-server securityip disable\n" }
-  expect "#" { send "snmp-server enable traps\n" }
+  expect "#" { send "no telnet-server enable\n" }
   expect "#" { send "exit\n"}
   expect "#" { send "write\n" }
   expect ":" { send "y\n" }
@@ -31,8 +29,7 @@ foreach b {56 57} {
 #SNR в сети Perco
 spawn ssh admin@192.168.222.100
 expect "#" { send "conf\n" }
-expect "#" { send "snmp-server securityip disable\n" }
-expect "#" { send "snmp-server enable traps\n" }
+expect "#" { send "no telnet-server enable\n" }
 expect "#" { send "exit\n"}
 expect "#" { send "write\n" }
 expect ":" { send "y\n" }

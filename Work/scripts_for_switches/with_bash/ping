@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo 'pinguem'
+diap=(PC2061 PC1867 PC1871 PC1858 PC1854 PC2058 PC1856)
+for b in ${diap[@]}; do
+  ping -c 2 $b
+done

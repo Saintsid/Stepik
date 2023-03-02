@@ -1,0 +1,19 @@
+#!/usr/bin/expect
+
+#Коммутаторы
+for {set b 89} {$b <= 99} {incr b} {
+  spawn ssh admin@172.16.1.$b
+  sleep 15
+  expect "?" { send "yes\n" }
+  puts "\n"
+  }
+
+#foreach c {3 39 43 44 46 47 48 49 50 53 54 55 56 57 58} {
+#  spawn ssh admin@172.16.1.$c
+#  expect "?" { send "yes\n" }
+#  puts "\n"
+#  }
+
+#puts {Hello, World - In Braces}
+#sleep 3
+#puts {Hello, World - In Braces2}
