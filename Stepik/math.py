@@ -110,10 +110,12 @@
 # n = int(input())
 # print(a + d * (n - 1))
 
-a = int(input())
-print(a, a * 2, a * 3, a * 4, a * 5, sep='---')
+# a = int(input())
+# print(a, a * 2, a * 3, a * 4, a * 5, sep='---')
 
-
+x = 12
+y = x / 2
+print(x + y)
 
 
 
